@@ -1,0 +1,13 @@
+<div class="container">
+  <form method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <button
+      href="{% url 'dashboard' %}"
+      class="btn btn-outline-info"
+      type="submit"
+    >
+      Sign In
+    </button>
+    <h3>Dont have an account register <a href="{% url 'signup' %}">here</a></h3>
+  </form>
+</div>
