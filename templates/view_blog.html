@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<h1>All Blogs</h1>
+{% for category, blogs in categorized_blogs.items %}
+    <h2>{{ category }}</h2>
+    <ul>
+        {% for blog in blogs %}
+            <li>Title: {{ blog.Title }}</li>
+    {% if blog.Image %}
+    <img
+      src="{{ blog.Image.url }}"
+      alt="{{ blog.Title }} Image"
+      height="200px"
+      width="200px"
+    />
+    {% endif %}
+    <p>Category: {{ blog.Category }}</p>
+    {% if blog.Summary %}
+    <p>Summary: {{ blog.Summary }}</p>
+    {% endif %}
+    <!-- <p>Content: {{ blog.Content }}</p> -->
+    <!-- <p>Draft: {% if blog.is_draft %} Yes {% else %} No {% endif %}</p> -->
+  </li>
+  <hr />
+  {% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}

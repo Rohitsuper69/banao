@@ -44,5 +44,13 @@
 </form>
 </div>
 
+<div>
+  {% if is_patient %}<a href="{% url 'view_blog' %}">View Blog</a>
+  {% else %}<a href="{% url 'create_blog' %}">Write Blog</a>
+  {% endif %}
+  {% if  not is_patient %}<a href="{% url 'viewmy_blog' %}">View my Blog</a>
+  {% endif %}
+</div>
+
 
 {% endblock %}

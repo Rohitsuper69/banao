@@ -18,7 +18,7 @@ def signup(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = UserSigninForm(request, request.POST)
+        form = UserSigninForm(request, request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
