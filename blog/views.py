@@ -41,7 +41,11 @@ def view_blog(request):
     categories = Blog.objects.values_list('Category', flat=True).distinct()
     categorized_blogs = {}
     for category in categories:
-        categorized_blogs[category] = Blog.objects.filter(Category=category)
+        blogs = Blog.objects.filter(Category=category)
+        for blog in blogs:
+            if len(blog.Summary.split()) > 15:
+                blog.Summary = ' '.join(blog.Summary.split()[:15]) + ' ...'
+        categorized_blogs[category] = blogs
     return render(request, 'view_blog.html', {'categorized_blogs': categorized_blogs})
 
 def viewmy_blog(request):
